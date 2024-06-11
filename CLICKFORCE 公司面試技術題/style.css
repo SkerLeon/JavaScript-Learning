@@ -1,0 +1,170 @@
+.advertise{
+    position: fixed;
+    bottom: -100%;
+    z-index: 1000;
+    transition: 2s ease-in;
+    width: 100%;
+    height: 100%;
+}
+.advertise_cover{
+    transform: translateY(150%);
+    transition: 0.5s ease-in;
+    width: 100%;
+    height: 68.2%;
+}
+.advertise_cover > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotate3d(1,0,0,0deg);
+    transition: 0.8s;
+}
+.advertise_cover > a > img {
+    width: 100%;
+    backface-visibility: hidden;
+}
+.advertise_cover_front{
+    position: absolute;
+}
+.advertise_cover_back{
+    transform: rotate3d(1,0,0,180deg);
+}
+.advertise_pic{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 56vw;
+    opacity: 1;
+    transition: 0.8s;
+}
+.advertise_pic_define{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: 1.2s;
+}
+.advertise_pic_img1{
+    z-index: 3;
+}
+.advertise_pic_img2{
+    z-index: 2;
+    bottom: -100%;
+}
+.advertise_pic_img3{
+    z-index: 1;
+    bottom: -100%;
+}
+.advertise_colsure{
+    position: absolute;
+    z-index: 1000;
+    top:4%;
+    right: 1%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.advertise_colsure > span{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 70%;
+    height: 2px;
+    background-color: white;
+}
+.advertise_colsure_left{
+    transform: rotate(45deg);
+}
+.advertise_colsure_right{
+    transform: rotate(-45deg);
+}
+.advertise_pointer{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 27%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: pointer_fadein 1.5s infinite;
+}
+@keyframes pointer_fadein{
+    0%{
+        bottom: 27%;
+        opacity: 0;
+    }
+    25%{
+        opacity:1;
+    }
+    75%{
+        opacity: 1;
+    }
+    80%,100%{
+        bottom: 33%;
+        opacity: 0;
+    }
+}
+.advertise_Slidebtn{
+    display: none;
+    width: 1.875rem;
+    height: 1.875rem;
+    position: absolute;
+    top: 18%;
+    right: 1%;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.advertise_Slidebtn > div{
+    width: 1.875rem;
+    height: 1.875rem;
+    position: absolute;
+    top: 35%;
+    left: 0;
+}
+.advertise_Slidebtn_top{
+    animation: Slidebtn_fadein 1.4s infinite;
+}
+.advertise_Slidebtn_bottom{
+    animation: Slidebtn_fadein 1.4s 0.7s infinite;
+}
+.advertise_Slidebtn > div > span{
+    display: block;
+    width: 25%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+}
+.advertise_Slidebtn_left{
+    transform: rotate(40deg);
+    left: 30%;
+}
+.advertise_Slidebtn_right{
+    transform: rotate(-40deg);
+    right: 30%;
+}
+@keyframes Slidebtn_fadein{
+    0% {
+        opacity: 0;
+        top: 35%;
+    }
+    30% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    90%, 100% {
+        opacity: 0;
+        top: 55%;
+    }
+}
