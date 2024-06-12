@@ -10,8 +10,4 @@ let uk = [...new Set(list3)] //展開SET函數的return值，set會取出唯一�
 
 let joinList = list3.join("-") //join可以把陣列轉成字串，並使用參數去替代每個索引值之間的位置
 
-console.log(list3);
-console.log(list4);
-console.log(list5);
-console.log(uk);
 console.log(joinList);
