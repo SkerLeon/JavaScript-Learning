@@ -24,7 +24,7 @@ const selectHello = hello.charAt(hello.length-1)
 //使用length-1的方式可以直接指定到最後一個字串，要-1的原因是它是以陣列的數值下去計算的，但我們length返回的是一個字數總數
 
 const indexHello = hello.indexOf("W") 
-//使用indexof去選取指定的字(有大小寫得分別)，回傳指定的索引值，當同個字出現兩次的時候，則會回傳第一個遇到的值，有另外一個lastindexof可以從清單後面去搜尋該字串值
+//使用indexof去選取指定的字(有大小寫得分別)，回傳指定的索引值，當同個字出現兩次的時候，則會回傳第一個遇到的值，有另外一個lastindexof可以從清單後面去搜尋該字串值，如果尋找不到值會回傳-1
 
 const subHello = hello.substring(0,5) 
 //會顯示對應索引值範圍的函數，可以用來搜索關鍵字，也可以藉由顯示對應索引值來達到刪除的方法

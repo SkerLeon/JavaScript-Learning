@@ -41,7 +41,7 @@ const list5 = [list + list2]
 //新的陣列會包含一個list+list2的文字索引，所以單純只是一個陣列裡面只有一個字串的索引值
 
 const uk = [...new Set(list3)] 
-//展開SET函數的return值，set會取出唯一的值
+//展開SET函數的return值，set會取出唯一的值，應用在當我們不希望陣列裡面有重複的值的時候
 
 const joinList = list3.join("-") 
 //join可以把陣列轉成字串，並使用參數去替代每個索引值之間的位置
@@ -50,8 +50,7 @@ const filterList = list3.filter((nub)=>{
         if(nub % 2 === 0){
             return nub
         }
-    }
-)
+    })
 //filter通常用在篩選原陣列裡面的資料傳回一個boolen值決定要不要加到新陣列裡，並傳回一個新陣列
 
 const mapList = list3.map((item)=>{
@@ -59,10 +58,51 @@ const mapList = list3.map((item)=>{
 })
 //map則適合用在要對陣列內每個元素去改變資料的行為或是副作用並傳回一個新陣列
 
-let foreachList = [1,2,3,4]
+const foreachList = [1,2,3,4]
 foreachList.forEach((item)=>{
-    console.log(item);
+    // console.log(item);
 })
 //其作用跟map相通，但foreach會改變原陣列
 
-console.log(foreachList);
+const indexList = list3.indexOf(4)
+//跟文字的indexof用法一樣，使用嚴格比較===去比對值和資料型態，若沒有找到值會回傳-1
+//可以控制想尋找元素的索引值起點，array.indexOf(想尋找的元素,索引值起點)
+//索引值起點也可以設定成負數形式，會從後面往前算索引值，比如-1就是指從後面數來第一個索引值
+
+const spliceList = ["豬大哥","豬二哥","豬小弟"]
+spliceList.splice(2,1)
+//array.splice(要開始改動的索引值,刪除多少個元素,想加入的元素)，要注意的是此method會更動原本的陣列數值並不會回傳
+//可以刪除陣列裡面的值，若用一個變數去接收這個method，會是被刪掉的值，所以其實它return的是我們想刪除的值
+spliceList.splice(1,0,"豬妹妹")
+//也可以用做新增值的用法，只要把要刪除的元素設成0就可以了
+spliceList.splice(1,1,"豬妹妹")
+//用新增的值去代替舊的值
+
+//Q1.我想要刪除BangKok這一筆資料，但不確定該陣列有沒有該筆資料
+const citys = ['Hong Kong', 'Tokyo', 'Seoul', 'Taipei', 'BangKok', 'Singapore']
+const selectDelete = citys.indexOf("BangKok")
+if(selectDelete > -1){
+    citys.splice(selectDelete,1)
+}
+//1.我要先使用indexof搜尋該筆資料存不存在，利用沒有資料就回傳-1的特性找
+//1-1.如果沒有回傳-1，就利用splice刪除該筆資料
+const newCitys = citys.filter((city)=>{
+    return city != "BangKok"
+})
+//2.當然也可以利用filter去做到這件事情，而且可以避免修改到原陣列
+
+//Q2.我想刪除重覆的資料，並只保留一筆資料
+const citys2 = ['Taipei', 'Hong Kong', 'Tokyo', 'Seoul', 'Seoul', 'Taipei', 'BangKok', 'Singapore']
+const delRepeatData = [...new Set(citys2)]
+//1.使用set唯一值的特性來去刪除重複的資料並利用展開運算子
+
+const filterCitys2Data = citys2.filter((city,index)=>{
+    return citys2.indexOf(city) === index
+})
+//2.那如果用indexof我該怎麼做
+//2-1.使用filter去遍歷每個陣列元素進行篩選
+//2-2.使用indexof只會回傳第一次相符資料的索引值特性，去比對陣列裡面的索引值是否相符
+//但這裡如果使用foreach+splice的寫法，會因為改變原陣列的特性，導致索引值對不上產生bug，因為filter是使用原陣列的值去建立新的陣列，所以這個方法比較合適
+
+
+console.log(filterCitys2Data);
