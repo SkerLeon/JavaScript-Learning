@@ -78,6 +78,16 @@ spliceList.splice(1,0,"豬妹妹")
 spliceList.splice(1,1,"豬妹妹")
 //用新增的值去代替舊的值
 
+const a =[1,2,3,[4],5]
+const b = [6,8,9,5,0]
+const concatList = a.concat(b)
+//concat的作用是合併陣列或值，但要注意的是它是淺拷貝，所以一旦改變引用的陣列我們新建立的陣列就會跟著改變
+// console.log(concatList);
+a[3].push("a","b")
+//這裡只改變了a陣列第二層的陣列數值，但concatList也會跟著修改
+// console.log(concatList);
+
+
 //Q1.我想要刪除BangKok這一筆資料，但不確定該陣列有沒有該筆資料
 const citys = ['Hong Kong', 'Tokyo', 'Seoul', 'Taipei', 'BangKok', 'Singapore']
 const selectDelete = citys.indexOf("BangKok")
@@ -104,5 +114,21 @@ const filterCitys2Data = citys2.filter((city,index)=>{
 //2-2.使用indexof只會回傳第一次相符資料的索引值特性，去比對陣列裡面的索引值是否相符
 //但這裡如果使用foreach+splice的寫法，會因為改變原陣列的特性，導致索引值對不上產生bug，因為filter是使用原陣列的值去建立新的陣列，所以這個方法比較合適
 
+//Q3把二維陣列合併成一個陣列，並找出有Cabin此字的行李箱
+const luggage = [
+    ['Original Cabin','Classic Cabin','Original Trunk S'],
+    ['Essential Cabin', 'Original Check-in M', 'Classic Check-in M'],
+    ['Original Trunk S', 'Hybrid Cabin S']
+]
+const newLuggage = [].concat(...luggage)
+//可以把concat想成跟map一樣會去遍歷陣列第一層的資料（淺拷貝）並展開，那當這裡使用concat(...luggage)的寫法時，就是我們要遍歷陣列第一層及第二層的數值
+const result = newLuggage.filter( (item) => {
+    return item.match(/Cabin/g)   
+})
+//這邊使用了使用match方法及正則表達式去搜尋陣列裡面的相對應的文字，若沒有相應的數值則會返回null值，而正則表達式後面的g則代表了全域搜索，意思是在整個字串裡面搜尋所有的匹配項，而不是找到第一個就停止
 
-console.log(filterCitys2Data);
+//Q4 自訂new Date產生的時間
+let today = new Date(...[2020,5,1])
+//基本用法，只是簡單展開出一個陣列去讓date接收數值
+
+console.log(today);
