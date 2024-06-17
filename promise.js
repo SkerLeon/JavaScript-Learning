@@ -21,3 +21,5 @@ promise.then((parentsAgree)=>{
 //那麼在前端工程領域理解起來應該是這樣，當今天不管發生什麼事情，都會有一個結果，這就是promise
 //在簡單來說就是
 //為什麼異步函式需要用到這個技術呢，除了避免建造出一個回調地獄造成程式碼品質超差很難進行維護以外，也是為了我們不能確保這個API會不會突然出錯，當出錯的時候就必須要有錯誤的情況該怎麼執行的方式
+
+//https://www.youtube.com/watch?v=EAxrwmjbIYQ&list=WL&index=4 yotube解說
