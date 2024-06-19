@@ -131,4 +131,27 @@ const result = newLuggage.filter( (item) => {
 let today = new Date(...[2020,5,1])
 //基本用法，只是簡單展開出一個陣列去讓date接收數值
 
-console.log(today);
+//Q5 如何打亂一個陣列裡面的資料，並保持一樣資料只會出現一次
+const spyList = ["黃昏","約兒","安妮亞","爆炸頭","夜錐"]
+//題目陣列
+const indexList2 = []
+//紀錄使用過的index陣列
+const randomList = spyList.map((item)=>{
+    let randomNub = Math.round(Math.random()*(spyList.length-1))
+    //建立一個根據陣列長度產生隨機數的變數
+
+    while (indexList2.indexOf(randomNub) !== -1) {
+        randomNub = Math.round(Math.random()*(spyList.length-1))
+    }
+    //利用indexof沒有值會回傳-1的特性，對比randomNub產出的值在indexList2裡面的值是否重複，如果有就重新產出隨機數直到沒有為止
+
+    indexList2.push(randomNub)
+    //更新好的隨機數加到紀錄用過的index陣列
+
+    return item = spyList[randomNub]  
+    //回傳陣列的數值
+})
+//1.利用map方法去循環陣列裡面的每個資料
+//2.使用random產生隨機數，先判斷這個數有沒有在一個負責接收使用過的亂數陣列裡，如果有就重新產出一個數值，沒有就加入到使用過的陣列裡
+
+console.log(randomList);
