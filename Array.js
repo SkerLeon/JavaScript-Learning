@@ -143,7 +143,9 @@ const randomList = spyList.map((item)=>{
     while (indexList2.indexOf(randomNub) !== -1) {
         randomNub = Math.round(Math.random()*(spyList.length-1))
     }
-    //利用indexof沒有值會回傳-1的特性，對比randomNub產出的值在indexList2裡面的值是否重複，如果有就重新產出隨機數直到沒有為止
+    //while的特性就是當條件不滿足的時候，會持續作用
+    //利用indexof沒有值會回傳-1的特性，對比randomNub產出的值在indexList2裡面的值是否重複
+    //當我今天產出的隨機數有在indexList2這個陣列裡時，我就重新產出
 
     indexList2.push(randomNub)
     //更新好的隨機數加到紀錄用過的index陣列
