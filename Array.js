@@ -58,13 +58,13 @@ const mapList = list3.map((item)=>{
 })
 //map則適合用在要對陣列內每個元素去改變資料的行為或是副作用並傳回一個新陣列
 
-const foreachList = [1,2,3,4]
-foreachList.forEach((item)=>{
+const forEachList = [1,2,3,4]
+forEachList.forEach((item)=>{
     // console.log(item);
 })
 //其作用跟map相通，但foreach會改變原陣列
 
-const indexList = list3.indexOf(4)
+const indexOfList = list3.indexOf(4)
 //跟文字的indexof用法一樣，使用嚴格比較===去比對值和資料型態，若沒有找到值會回傳-1
 //可以控制想尋找元素的索引值起點，array.indexOf(想尋找的元素,索引值起點)
 //索引值起點也可以設定成負數形式，會從後面往前算索引值，比如-1就是指從後面數來第一個索引值
@@ -86,6 +86,9 @@ const concatList = a.concat(b)
 a[3].push("a","b")
 //這裡只改變了a陣列第二層的陣列數值，但concatList也會跟著修改
 // console.log(concatList);
+
+const reverseList = list.reverse()
+//把陣列內所有的元素都反轉排列
 
 
 //Q1.我想要刪除BangKok這一筆資料，但不確定該陣列有沒有該筆資料
@@ -156,4 +159,39 @@ const randomList = spyList.map((item)=>{
 //1.利用map方法去循環陣列裡面的每個資料
 //2.使用random產生隨機數，先判斷這個數有沒有在一個負責接收使用過的亂數陣列裡，如果有就重新產出一個數值，沒有就加入到使用過的陣列裡
 
-console.log(randomList);
+//Q6 使用二分法來尋找陣列元素，並列印出來在該陣列的索引值
+//二分法其實是一種尋找的觀念，重點在於如何有效率找出目標在哪，此方法可以用在任何事情上面，當我們想尋找CSS bug又不知道從哪裡下手的時候，可以先把一半的code註解掉在觀察錯誤有沒有發生，如果有就代表該錯誤發生在沒註解掉的那一半code上，在不斷的使用二分法往下尋找，以維持程式的效率來說，當我們陣列裡面具有很多資料的時候，可以應用在如何節省效能正確地找到該資料，很多時候要如何提升程式碼的效能就要從邏輯結構開始設計，以一些概念來做設計
+const dichotomyList = [1,33,44,56,76,88,92,103,115]
+function searchData (target){
+    let indexStart = 0
+    //陣列起始索引值
+    let indexEnd = dichotomyList.length-1
+    //陣列最後索引值
+    let indexMiddle
+    //陣列中間值索引
+    let element
+    //陣列中間值的資料
+
+    while(indexStart <= indexEnd){
+        indexMiddle = Math.floor((indexStart + indexEnd) / 2)
+        //這裡用Math.floor去取得indexMiddle的中間索引值
+
+        element = dichotomyList[indexMiddle]
+        //用取得的索引值指定資料
+
+        if(element === target){
+            return indexMiddle
+            //對比element === target是同樣的數值，有的話返回該資料索引值
+        } else if(target < element){
+            indexEnd = indexMiddle - 1
+            //當target > element時，把indexStart設定為取得的中間值+1(為了避免已經被確定不是的第一筆資料在被比對一次)
+        } else{
+            indexStart = indexMiddle + 1
+            //不然當target < element時，把indexEnd設定為取得的中間值-1(為了避免已經被確定不是的尾端資料在被比對一次)
+        }
+        //把變數設在while迴圈外面是為了要紀錄該值的變化，所以不能放在裡面導致每次循環時重置
+    }return -1
+    //因為我們不知道要執行幾次才能搜尋到指定的資料索引值，所以我們可以設定當indexStart <= indexEnd用while迴圈產出我們要的結果，當條件不符合時return -1的結果，代表陣列裡面沒有這個值
+}
+
+console.log(searchData(111));

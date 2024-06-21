@@ -25,12 +25,16 @@ const str = "500"
 const parseIntNub = parseInt(str)
 //把字串轉換成數字，parseFloat則可以轉成小數點
 if(typeof parseIntNub === "number"){
-    return console.log(`我是數字:${parseIntNub}`);
+    // return console.log(`我是數字:${parseIntNub}`);
 }
 
-// console.log(parseIntNub);
+const floorNub = Math.floor(6.1)
+//相比於round，floor是不管小數點的位數有多少，一律返回最小整數
+//比如Math.floor(6.1)及Math.floor(6.9)都是返回6這個整數
 
-//製作一個隨機號碼的樂透機器，當達到指定的數值時會log出訊息
+console.log(floorNub);
+
+//Q1 製作一個隨機號碼的樂透機器，當達到指定的數值時會log出訊息
 
 function Lotto (){
     const nub = Math.round(Math.random())*10
