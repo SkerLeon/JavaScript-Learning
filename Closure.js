@@ -1,3 +1,4 @@
+//閉包
 function Closure (){
     let count = 0
     return {
